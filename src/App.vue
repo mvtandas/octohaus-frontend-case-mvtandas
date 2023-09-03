@@ -134,41 +134,41 @@ export default {
                   <span class="date-text mb-1">{{ comment.date }}</span>
                   <div class="w-100">
                     <span class="text-purple me-1">{{ comment.name }}</span>
-                    <Transition>
-                      <span v-if="!editableIndex">{{ comment.text }}</span>
-                      <div v-else :class="!editableIndex ? 'h-0' : ''">
-                        <textarea
-                          class="form-control border-0 shadow-none w-100 p-0"
-                          rows="4"
-                          placeholder="Your text here"
-                          v-model="comment.text"
-                        ></textarea>
-                        <div class="d-flex w-100 justify-content-between">
-                          <div class="buttons d-flex">
-                            <button class="btn icon-btn">
-                              <img src="@/assets/ionic-ios-attach.svg" />
-                            </button>
-                            <button class="btn icon-btn">
-                              <vue-feather type="smile" size="16"></vue-feather>
-                            </button>
-                          </div>
-                          <div class="buttons d-flex">
-                            <button
-                              class="btn transparent-btn"
-                              @click="editableIndex = null"
-                            >
-                              CANCEL
-                            </button>
-                            <button
-                              class="btn purple-btn"
-                              @click="updateComment(comment.id)"
-                            >
-                              UPDATE
-                            </button>
-                          </div>
+                    <span v-if="editableIndex !== comment.id">{{
+                      comment.text
+                    }}</span>
+                    <div v-else>
+                      <textarea
+                        class="form-control border-0 shadow-none w-100 p-0"
+                        rows="4"
+                        placeholder="Your text here"
+                        v-model="comment.text"
+                      ></textarea>
+                      <div class="d-flex w-100 justify-content-between">
+                        <div class="buttons d-flex">
+                          <button class="btn icon-btn">
+                            <img src="@/assets/ionic-ios-attach.svg" />
+                          </button>
+                          <button class="btn icon-btn">
+                            <vue-feather type="smile" size="16"></vue-feather>
+                          </button>
+                        </div>
+                        <div class="buttons d-flex">
+                          <button
+                            class="btn transparent-btn"
+                            @click="editableIndex = null"
+                          >
+                            CANCEL
+                          </button>
+                          <button
+                            class="btn purple-btn"
+                            @click="updateComment(comment.id)"
+                          >
+                            UPDATE
+                          </button>
                         </div>
                       </div>
-                    </Transition>
+                    </div>
                   </div>
                 </div>
               </div>
